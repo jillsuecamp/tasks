@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import peanut from "./peanut.jpg";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 function App(): JSX.Element {
     return (
@@ -16,8 +16,8 @@ function App(): JSX.Element {
             <img
                 src={peanut}
                 alt="My cat peanut"
-                width="500"
-                height="600"
+                width="200"
+                height="300"
             ></img>
             <ul>
                 <li>First thing</li>
@@ -27,6 +27,20 @@ function App(): JSX.Element {
                     Log Hello World
                 </Button>
             </ul>
+            <Container>
+                <Row>
+                    <Col>
+                        <div
+                            style={{ backgroundColor: "red", padding: "100px" }}
+                        ></div>
+                    </Col>
+                    <Col>
+                        <div
+                            style={{ backgroundColor: "red", padding: "100px" }}
+                        ></div>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }
