@@ -12,21 +12,23 @@ export function fahrenheitToCelius(temperature: number): number {
  * if the number is greater than zero.
  */
 export function add3(first: number, second: number, third: number): number {
-    return first < 0 && second < 0 && third < 0
-        ? 0
-        : first < 0 && second < 0
-        ? third
-        : second < 0 && third < 0
-        ? first
-        : first < 0 && third < 0
-        ? second
-        : first < 0
-        ? second + third
-        : second < 0
-        ? first + third
-        : third < 0
-        ? first + second
-        : first + second + third;
+    if (first < 0 && second < 0 && third < 0) {
+        return 0;
+    } else if (first < 0 && second < 0) {
+        return third;
+    } else if (second < 0 && third < 0) {
+        return first;
+    } else if (first < 0 && third < 0) {
+        return second;
+    } else if (first < 0) {
+        return second + third;
+    } else if (second < 0) {
+        return first + third;
+    } else if (third < 0) {
+        return first + second;
+    } else {
+        return first + second + third;
+    }
 }
 
 /**
@@ -51,17 +53,11 @@ export function isQuestion(message: string): boolean {
  * upper or lower case), then return `false`. Otherwise, return `null`.
  */
 export function convertYesNo(word: string): boolean | null {
-    return word == "yes"
-        ? true
-        : word == "Yes"
-        ? true
-        : word == "YES"
-        ? true
-        : word == "NO"
-        ? false
-        : word == "no"
-        ? false
-        : word == "No"
-        ? false
-        : null;
+    if (word == "yes" || word == "YES" || word == "Yes") {
+        return true;
+    } else if (word == "no" || word == "No" || word == "NO") {
+        return false;
+    } else {
+        return null;
+    }
 }
