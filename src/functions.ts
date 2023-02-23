@@ -26,6 +26,8 @@ export function add3(first: number, second: number, third: number): number {
         return first + third;
     } else if (third < 0) {
         return first + second;
+    } else {
+        return first + second + third;
     }
 }
 
@@ -51,17 +53,11 @@ export function isQuestion(message: string): boolean {
  * upper or lower case), then return `false`. Otherwise, return `null`.
  */
 export function convertYesNo(word: string): boolean | null {
-    return word == "yes"
-        ? true
-        : word == "Yes"
-        ? true
-        : word == "YES"
-        ? true
-        : word == "NO"
-        ? false
-        : word == "no"
-        ? false
-        : word == "No"
-        ? false
-        : null;
+    if (word == "yes" || word == "YES" || word == "Yes") {
+        return true;
+    } else if (word == "no" || word == "No" || word == "NO") {
+        return false;
+    } else {
+        return null;
+    }
 }
