@@ -26,8 +26,6 @@ export function add3(first: number, second: number, third: number): number {
         return first + third;
     } else if (third < 0) {
         return first + second;
-    } else {
-        return first + second + third;
     }
 }
 
