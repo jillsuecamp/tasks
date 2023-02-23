@@ -26,6 +26,23 @@ export function add3(first: number, second: number, third: number): number {
         return first + third;
     } else if (third < 0) {
         return first + second;
+    } else {
+        return first + second + third;
+    }
+    if (first < 0 && second < 0 && third < 0) {
+        return 0;
+    } else if (first < 0 && second < 0) {
+        return third;
+    } else if (second < 0 && third < 0) {
+        return first;
+    } else if (first < 0 && third < 0) {
+        return second;
+    } else if (first < 0) {
+        return second + third;
+    } else if (second < 0) {
+        return first + third;
+    } else if (third < 0) {
+        return first + second;
     }
 }
 
