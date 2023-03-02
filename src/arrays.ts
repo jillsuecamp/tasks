@@ -3,9 +3,17 @@
  * JUST the first and last number. If there are no elements, return
  * an empty array. If there is one element, the resulting list should
  * the number twice.
+ *
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    const firstLast: number[] = [...numbers];
+    if (numbers.length == 0) {
+        return [];
+    } else if (numbers.length == 1) {
+        return [firstLast[0], firstLast[0]];
+    } else {
+        return [firstLast[0], firstLast[firstLast.length - 1]];
+    }
 }
 
 /**
