@@ -108,12 +108,12 @@ export function makeMath(addends: number[]): string {
         (addendTotal: number, num: number) => addendTotal + num,
         0
     );
-    const convertString = addends.map((addend: number): string =>
+    const representAddition = addends.map((addend: number): string =>
         addends[addends.length - 1]
             ? addend.toString() + "+"
             : addend.toString() + "+"
     );
-    return sum + "=" + convertString;
+    return sum + "=" + representAddition;
 }
 
 /**
@@ -125,6 +125,16 @@ export function makeMath(addends: number[]): string {
  * For instance, the array [1, 9, -5, 7] would become [1, 9, -5, 10, 7]
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
+
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const negatives = values.findIndex((value: number): boolean => value < 0);
+    const total =
+        negatives == -1
+            ? values.reduce((a, b) => a + b, 0)
+            : values.slice(0, negatives).reduce((a, b) => a + b, 0);
+    const injectpos = [...values];
+    negatives == -1
+        ? injectpos.push(total)
+        : injectpos.splice(negatives + 1, 0, total);
+    return injectpos;
 }
