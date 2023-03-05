@@ -108,10 +108,11 @@ export function makeMath(addends: number[]): string {
         (addendTotal: number, num: number) => addendTotal + num,
         0
     );
+    const lastNum: number = addends.length - 1;
     const representAddition = addends.map((addend: number): string =>
-        addends[addends.length - 1]
+        !(addends[addend] == lastNum)
             ? addend.toString() + "+"
-            : addend.toString() + "+"
+            : addend.toString()
     );
     return sum + "=" + representAddition;
 }
