@@ -5,6 +5,7 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+PASS src/arrays.test.ts
 FAIL src/HtmlCss.test.tsx
   ● Some HTML Elements are added. › There is a header
 
@@ -146,14 +147,14 @@ PASS src/App.test.tsx
 --------------|---------|----------|---------|---------|-------------------
 File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 --------------|---------|----------|---------|---------|-------------------
-All files     |   26.19 |    38.27 |   24.13 |   27.16 |                   
+All files     |      80 |    66.66 |     100 |   79.01 |                   
  App.tsx      |     100 |      100 |     100 |     100 |                   
- arrays.ts    |       0 |        0 |       0 |       0 | 9-139             
+ arrays.ts    |     100 |      100 |     100 |     100 |                   
  functions.ts |   54.05 |    53.44 |     100 |   54.05 | 20,22,24,32-45    
 --------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 1 failed, 3 passed, 4 total
-Tests:       1 failed, 13 passed, 14 total
+Test Suites: 1 failed, 4 passed, 5 total
+Tests:       1 failed, 22 passed, 23 total
 Snapshots:   0 total
-Time:        3.914 s
+Time:        5.261 s
 Ran all test suites.
