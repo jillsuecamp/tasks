@@ -104,17 +104,13 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    const sum = addends.reduce(
-        (addendTotal: number, num: number) => addendTotal + num,
-        0
-    );
-    const lastNum: number = addends.length - 1;
-    const representAddition = addends.map((addend: number): string =>
-        !(addends[addend] == lastNum)
-            ? addend.toString() + "+"
-            : addend.toString()
-    );
-    return sum + "=" + representAddition;
+    const sum = addends.reduce((total: number, num: number) => total + num, 0);
+    const representAddition = addends.join("+");
+    if (addends.length == 0) {
+        return "0=0";
+    } else {
+        return sum + "=" + representAddition;
+    }
 }
 
 /**
