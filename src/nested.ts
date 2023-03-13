@@ -49,10 +49,16 @@ export function findQuestion(
 
 /**
  * Consumes an array of questions and returns a new array that does not contain the question
- * with the given `id`.
+ * with the given `id`. We want only the questions that contain the given id.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    const questionRemoved = deepCopy.filter(
+        (question: Question): boolean => !(question.id === id)
+    );
+    return questionRemoved;
 }
 
 /***
