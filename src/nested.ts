@@ -224,7 +224,19 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    const modifiedQuestionType = questions.map(
+        (question: Question): Question =>
+            question.id === targetId
+                ? { ...question, type: newQuestionType }
+                : { ...question }
+    );
+    const modifiedOptions = modifiedQuestionType.map(
+        (question: Question): Question =>
+            question.type === "short_answer_question"
+                ? { ...question, options: [] }
+                : { ...question }
+    );
+    return modifiedOptions;
 }
 
 /**
