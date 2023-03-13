@@ -124,7 +124,8 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    const header = "id,name,options,points,published\n";
+    return header;
 }
 
 /**
@@ -133,6 +134,7 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
+    const answers: Answer[] = new Array(questions.length);
     return [];
 }
 
@@ -141,7 +143,13 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    const allPublished = deepCopy.map(
+        (question: Question): Question => ({ ...question, published: true })
+    );
+    return allPublished;
 }
 
 /***
