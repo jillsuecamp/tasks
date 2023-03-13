@@ -76,14 +76,34 @@ export function getNames(questions: Question[]): string[] {
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    const questionPoints = questions.map(
+        (question: Question): number => question.points
+    );
+    const sum = questionPoints.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+    );
+    return sum;
 }
 
 /***
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    return 0;
+    const deepCopy = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    const onlyPublished = deepCopy.filter(
+        (question: Question): boolean => question.published === true
+    );
+    const publishedPoints = onlyPublished.map(
+        (question: Question): number => question.points
+    );
+    const sum = publishedPoints.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+    );
+    return sum;
 }
 
 /***
