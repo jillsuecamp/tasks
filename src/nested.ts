@@ -134,8 +134,16 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    const answers: Answer[] = new Array(questions.length);
-    return [];
+    let newArray = new Array(questions.length);
+    newArray = questions.map(
+        (question: Question): Answer => ({
+            questionId: question.id,
+            text: "",
+            submitted: false,
+            correct: false
+        })
+    );
+    return newArray;
 }
 
 /***
@@ -255,6 +263,10 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
+    if (targetOptionIndex === -1) {
+    } else {
+    }
+
     return [];
 }
 
