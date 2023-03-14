@@ -1,3 +1,4 @@
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 
@@ -263,11 +264,29 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    if (targetOptionIndex === -1) {
-    } else {
-    }
-
-    return [];
+    const copyOptions = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const editedOptions = copyOptions.map((question: Question): Question => {
+        if (question.id === targetId) {
+            if (targetOptionIndex === -1) {
+                return {
+                    ...question,
+                    options: [...question.options, newOption]
+                };
+            } else {
+                const newOptions = [...question.options];
+                newOptions[targetOptionIndex] = newOption;
+                return { ...question, options: newOptions };
+            }
+        } else {
+            return { ...question };
+        }
+    });
+    return editedOptions;
 }
 
 /***
