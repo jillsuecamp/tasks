@@ -1,4 +1,3 @@
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 
@@ -126,7 +125,13 @@ id,name,options,points,published
  */
 export function toCSV(questions: Question[]): string {
     const header = "id,name,options,points,published\n";
-    return header;
+    const print = questions
+        .map(
+            (question: Question): string =>
+                `${question.id},${question.name},${question.options.length},${question.points},${question.published}`
+        )
+        .join("\n");
+    return header + print;
 }
 
 /**
