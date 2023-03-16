@@ -1,5 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { duplicateQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -305,5 +306,23 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question
+        })
+    );
+    // Find the index of the target question.
+    const index = deepCopy.findIndex((question) => question.id === targetId);
+    if (index === -1) {
+        // If the target question is not found, return the original array.
+        return deepCopy;
+    }
+    // Duplicate the target question and insert it after the target question.
+    const duplicate = duplicateQuestion(newId, deepCopy[index]);
+    const finalArray = [
+        ...deepCopy.slice(0, index + 1),
+        duplicate,
+        ...deepCopy.slice(index + 1)
+    ];
+    return finalArray;
 }
